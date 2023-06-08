@@ -1,0 +1,22 @@
+mat-sidenav{
+  width: 250px;
+}
+mat-sidenav-container{
+  height: calc(100vh - 8vh);
+}
+
+body{
+  background-color: #b1b1b1;
+}
+
+.active{
+  background: #c6ceff;
+}
+
+.mat-nav-list .mat-list-item{
+    border-radius: 10px;
+}
+.mat-list-base{
+    padding: 10px;
+}
+

@@ -1,0 +1,46 @@
+.menu-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: white;
+  border-radius: 15px 0 0 15px;
+  height: 100vh;
+  opacity: 0;
+  width: 0;
+  transition: all 0.50s;
+  z-index: 99999;
+}
+
+
+.active{
+  opacity: 1;
+  width: 30vw;
+  transition: all 0.50s;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #080808a1;
+}
+.overlay.enabled {
+  display: initial;
+}
+
+@media (width <= 430px) {
+  .menu{
+    width: 80vw !important;
+    transition: all 0.50s;
+  }
+}

@@ -1,0 +1,116 @@
+<div class="container-fluid mt-3">
+  <div class="row text-center py-1">
+    <h2 class="text-secondary text-uppercase">Panel Data</h2>
+  </div>
+  <div class="mat-elevation-z8 border">
+    <div class="row m-0 border">
+      <div class="col-md-3 py-3 d-flex justify-content-end">
+        <input
+          class="form-control"
+          placeholder="Search"
+          (keyup)="applyFilter($event)"
+          #input
+        />
+      </div>
+      <div class="col-md-9 d-flex justify-content-end align-items-center">
+        <mat-paginator
+          #paginatorRef
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select"
+          #myPaginator
+        ></mat-paginator>
+      </div>
+    </div>
+    <!-- Table -->
+    <table mat-table [dataSource]="dataSource" matSort class="w-100 border">
+      <!-- Panel Name -->
+      <ng-container matColumnDef="panel_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">Panel Name</th>
+        <td mat-cell *matCellDef="let element">
+          <span type="button" href="" (click)="openSideBarForPanelDetails(element._id)" style="text-decoration: none;color: black;">
+            {{ element.panel_name }}
+          </span>
+        </td>
+      </ng-container>
+      <!-- Mac Id -->
+      <ng-container matColumnDef="mac_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">Mac Id</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.mac_id }}
+        </td>
+      </ng-container>
+      <!-- Lat -->
+      <ng-container matColumnDef="Lat">
+        <th mat-header-cell *matHeaderCellDef class="fs-6">Lat</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.Lat }}
+        </td>
+      </ng-container>
+      <!-- Long -->
+      <ng-container matColumnDef="Lng">
+        <th mat-header-cell *matHeaderCellDef class="fs-6">Long</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.Lng }}
+        </td>
+      </ng-container>
+      <!-- Location -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef class="fs-6">Location</th>
+        <td mat-cell *matCellDef="let element">
+            <!-- View Details -->
+            <button
+                mat-icon-button
+                color="accent"
+                matTooltip="View All Details"
+                (click)="openSideBarForMapDetails(element._id)"
+            >
+                <mat-icon aria-label="view details">location_on</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div *ngIf="dataSource == null || dataSource?.filteredData?.length == 0">
+      <div class="row m-0 my-3 justify-content-center">No Records Found.</div>
+    </div>
+  </div>
+</div>
+<app-sidebar>
+  <div *ngIf="showPanelDetail">
+    <div class="row mt-3">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Parameters</th>
+            <th scope="col">R Phase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" style="font-weight: 500!important">Voltage Status</th>
+            <td>{{particularData?.r_volt_status}}</td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight: 500!important">MCB Status</th>
+            <td>{{particularData?.r_mcb_status}}</td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight: 500!important">Load Status</th>
+            <td>{{particularData?.r_load_status}}</td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight: 500!important">PF Status</th>
+            <td>{{particularData?.r_pf_status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="showPanelMapDetail">
+
+
+</div>
+</app-sidebar>
+

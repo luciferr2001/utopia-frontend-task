@@ -1,0 +1,9 @@
+<div class="menu" #menu>
+  <div class="text-start p-3">
+    <button (click)="toggle()" mat-icon-button color="accent">
+      <mat-icon aria-label="view details">close</mat-icon>
+    </button>
+    <ng-content> </ng-content>
+  </div>
+</div>
+<div #overlay class="overlay"></div>
