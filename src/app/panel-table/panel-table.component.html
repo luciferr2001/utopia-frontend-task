@@ -26,16 +26,25 @@
     <table mat-table [dataSource]="dataSource" matSort class="w-100 border">
       <!-- Panel Name -->
       <ng-container matColumnDef="panel_name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">Panel Name</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">
+          Panel Name
+        </th>
         <td mat-cell *matCellDef="let element">
-          <span type="button" href="" (click)="openSideBarForPanelDetails(element._id)" style="text-decoration: none;color: black;">
+          <span
+            type="button"
+            href=""
+            (click)="openSideBarForPanelDetails(element._id)"
+            style="text-decoration: none; color: black"
+          >
             {{ element.panel_name }}
           </span>
         </td>
       </ng-container>
       <!-- Mac Id -->
       <ng-container matColumnDef="mac_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">Mac Id</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="fs-6">
+          Mac Id
+        </th>
         <td mat-cell *matCellDef="let element">
           {{ element.mac_id }}
         </td>
@@ -58,15 +67,15 @@
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef class="fs-6">Location</th>
         <td mat-cell *matCellDef="let element">
-            <!-- View Details -->
-            <button
-                mat-icon-button
-                color="accent"
-                matTooltip="View All Details"
-                (click)="openSideBarForMapDetails(element._id)"
-            >
-                <mat-icon aria-label="view details">location_on</mat-icon>
-            </button>
+          <!-- View Details -->
+          <button
+            mat-icon-button
+            color="accent"
+            matTooltip="View All Details"
+            (click)="openSideBarForMapDetails(element.Lat,element.Lat)"
+          >
+            <mat-icon aria-label="view details">location_on</mat-icon>
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -89,28 +98,29 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row" style="font-weight: 500!important">Voltage Status</th>
-            <td>{{particularData?.r_volt_status}}</td>
+            <th scope="row" style="font-weight: 500 !important">
+              Voltage Status
+            </th>
+            <td>{{ particularData?.r_volt_status }}</td>
           </tr>
           <tr>
-            <th scope="row" style="font-weight: 500!important">MCB Status</th>
-            <td>{{particularData?.r_mcb_status}}</td>
+            <th scope="row" style="font-weight: 500 !important">MCB Status</th>
+            <td>{{ particularData?.r_mcb_status }}</td>
           </tr>
           <tr>
-            <th scope="row" style="font-weight: 500!important">Load Status</th>
-            <td>{{particularData?.r_load_status}}</td>
+            <th scope="row" style="font-weight: 500 !important">Load Status</th>
+            <td>{{ particularData?.r_load_status }}</td>
           </tr>
           <tr>
-            <th scope="row" style="font-weight: 500!important">PF Status</th>
-            <td>{{particularData?.r_pf_status}}</td>
+            <th scope="row" style="font-weight: 500 !important">PF Status</th>
+            <td>{{ particularData?.r_pf_status }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div *ngIf="showPanelMapDetail">
-
-
-</div>
+    <div id="map"></div>
+  </div>
 </app-sidebar>
 
