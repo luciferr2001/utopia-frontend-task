@@ -72,7 +72,7 @@
             mat-icon-button
             color="accent"
             matTooltip="View All Details"
-            (click)="openSideBarForMapDetails(element.Lat,element.Lat)"
+            (click)="openSideBarForMapDetails(element.Lat,element.Lng)"
           >
             <mat-icon aria-label="view details">location_on</mat-icon>
           </button>
@@ -120,6 +120,9 @@
     </div>
   </div>
   <div *ngIf="showPanelMapDetail">
+    <div class="mt-2 rounded-3" style="background: #2b2a66e8;">
+      <h4 class="p-3 text-white fw-bold">Details</h4>
+    </div>
     <div id="map"></div>
   </div>
 </app-sidebar>
